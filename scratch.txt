@@ -19,7 +19,7 @@ favorite programming language.
 
 # Externals
 A command line wrapper for the above
-A web base wrapper for the above
+A web based wrapper for the above
 
 ## Unknowns
 How to calculate the users favorite language through calls to Githubs API.
