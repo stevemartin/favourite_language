@@ -1,0 +1,31 @@
+Github has many API clients libraries: https://developer.github.com/libraries/
+  * do we want to provide an adapter for the different ones?
+  * do we just use the most popular one for now?
+
+We want a simple command line tool that can be given a Github username and returns
+the users favorite programming language.
+
+OR
+
+We want a simple web application that can be given a Github username and returns
+the users favorite programming language.
+
+## Authentication
+Octokit offers a broad array of different authentication methods.
+
+## Core domain
+A class or series of classes that perform the task of returning a Github users
+favorite programming language.
+
+# Externals
+A command line wrapper for the above
+A web base wrapper for the above
+
+## Unknowns
+How to calculate the users favorite language through calls to Githubs API.
+  * Can the API docs give us more info?
+    * We can retrieve a users repos from repos_url
+      https://api.github.com/users/stevemartin/repos
+      |- https://api.github.com/repos/stevemartin/.vim/languages
+      |- https://api.github.com/repos/stevemartin/ajax_validations/languages
+
