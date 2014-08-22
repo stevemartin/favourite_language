@@ -11,6 +11,7 @@ GEM
     netrc (0.7.7)
     octokit (3.3.1)
       sawyer (~> 0.5.3)
+    parallel (1.2.4)
     pry (0.10.1)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -27,6 +28,7 @@ GEM
     rspec-mocks (3.0.4)
       rspec-support (~> 3.0.0)
     rspec-support (3.0.4)
+    ruby-progressbar (1.5.1)
     sawyer (0.5.5)
       addressable (~> 2.3.5)
       faraday (~> 0.8, < 0.10)
@@ -38,5 +40,7 @@ PLATFORMS
 DEPENDENCIES
   netrc
   octokit
+  parallel
   pry
   rspec
+  ruby-progressbar

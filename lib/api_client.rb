@@ -1,18 +1,26 @@
 require_relative 'api_repo'
+require 'parallel'
+require 'pry'
 
+# This is where the guts of the github api calls happen
+#
 class ApiClient
   def initialize(client_factory = Octokit::Client)
     @client = client_factory.new(netrc: true)
+
+    # Test credentials
+    @client.user
   end
 
   def favourite_language_for(github_user, repo_factory = ApiRepo)
     @repo_factory = repo_factory
     response = get_github_user(github_user)
-    return "404 - User not found!" if response == '404'
+    return '404 - User not found!' if response == '404'
     get_highest_count(response)
   end
 
   private
+
   def get_highest_count(user)
     repos = get_users_repos(user)
     counts = get_language_counts(repos)
@@ -22,13 +30,15 @@ class ApiClient
   def get_language_counts(repos)
     languages = {}
     get_repo_languages(repos).map do |hash|
-      languages.merge!(hash) { |key, v1, v2| v1 + v2 }
+      languages.merge!(hash) { |_key, v1, v2| v1 + v2 }
     end
     languages
   end
 
   def get_users_repos(github_user)
-    users_repos(github_user).map { |repo| @repo_factory.new(repo, github_user) }
+    repos = users_repos(github_user)
+    results = repos.map { |repo| @repo_factory.new(repo) }
+    results
   end
 
   def users_repos(github_user)
@@ -36,7 +46,7 @@ class ApiClient
   end
 
   def get_repo_languages(repos)
-    repos.collect { |repo| repo.languages }
+    Parallel.map(repos) { |repo| repo.languages }
   end
 
   def get_github_user(github_user)
