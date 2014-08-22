@@ -2,7 +2,9 @@
 source "https://rubygems.org"
 
 # Library
-gem "octokit"
+gem 'octokit'
+gem 'netrc'
 
 # Testing
-gem "rspec"
+gem 'rspec'
+gem 'pry'

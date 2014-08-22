@@ -29,5 +29,9 @@ How to calculate the users favorite language through calls to Githubs API.
       |- https://api.github.com/repos/stevemartin/.vim/languages
       |- https://api.github.com/repos/stevemartin/ajax_validations/languages
 
-Testing the structure of the aggregation code
+  * Can we get commits for a given user for a given repo
+    * https://api.github.com/repos/stevemartin/bash-it/commits?author=tswicegood
+    * Get the url for each commit
+    * Get the file blobs for each commit
+    * Pass into linguist
 
