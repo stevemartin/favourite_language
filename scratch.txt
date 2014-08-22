@@ -29,3 +29,5 @@ How to calculate the users favorite language through calls to Githubs API.
       |- https://api.github.com/repos/stevemartin/.vim/languages
       |- https://api.github.com/repos/stevemartin/ajax_validations/languages
 
+Testing the structure of the aggregation code
+
