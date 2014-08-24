@@ -24,7 +24,7 @@ describe FavouriteLanguage do
     expect(subject.get).to eq(results)
   end
 
-  context 'when there are two equal results' do
+  context 'when there are two or more equal results' do
     let(:languages) { [{:APL => 5, :COBAL => 5, :Python =>3}]*3 }
     let(:results) { [:APL, :COBAL] }
 
