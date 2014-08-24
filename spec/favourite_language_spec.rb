@@ -58,7 +58,7 @@ describe FavouriteLanguage do
   end
 
     it 'should 404' do
-      expect(subject.get).to eq("404 - User not found!")
+      expect{ subject.get }.to raise_exception("404 - User not found!")
     end
   end
 end

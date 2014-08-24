@@ -3,7 +3,7 @@ require_relative '../lib/api_client_controller'
 
 describe ApiClientController do
   let(:client_factory) { double(:client_factory) }
-  let(:github_client)  { double(:github_client) }
+  let(:github_client)  { double(:github_client, user:double(:user)) }
   let(:repo_factory)   { double(:repo_decorator_factory) }
   let(:repo_decorator) { double(:repo_decorator) }
   let(:repos) { [repo_decorator]*3 }
@@ -41,6 +41,13 @@ describe ApiClientController do
     it 'parallel processes asking the api for each repos languages' do
       allow(parallel_processor).to receive(:map).and_return(mapped_languages)
       expect(subject.get_repo_languages(repos, parallel_processor)).to eq([languages]*3)
+    end
+  end
+
+  describe 'with invalid credientials' do
+    it 'should raise an exception' do
+      allow(github_client).to receive(:user).and_raise
+      expect{ subject }.to raise_exception("Check your credientials, could not connect")
     end
   end
 

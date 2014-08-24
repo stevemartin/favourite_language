@@ -19,7 +19,7 @@ class FavouriteLanguage
   def get
     response = github_user_data
 
-    return '404 - User not found!' if response == '404'
+    raise '404 - User not found!' if response == '404'
     with_max_loc(response)
   end
 
