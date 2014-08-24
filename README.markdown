@@ -9,11 +9,15 @@ This app uses the `rvm/rbenv` generic `.ruby-version` config to set up ruby.
 The app uses netrc to authenticate with github, you'll need to have, or generate, an
 access token for your user.
 
-Copy the `.netrc` template file
+### If you dont have a `~/.netrc`
+Copy the `.netrc` template file to your home folder if you don't already have one
 
-    cp .netrc.dist .netrc
+    cp .netrc.dist ~/.netrc
 
 Now replace the credientials in the `.netrc` file with your own
+
+### If you do have a `~/.netrc`
+Add the credientials in the `.netrc.dist` file into your local `~/.netrc` and replace the biolerplate with your actual credientials.
 
 # Usage
 In the app root folder:
