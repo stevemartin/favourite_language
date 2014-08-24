@@ -50,4 +50,15 @@ describe FavouriteLanguage do
       expect(subject.get).to eq(results)
     end
   end
+
+  context 'when there is no user matching' do
+  before do
+    allow(api_client).to receive(:get_github_user)
+      .with(github_user).and_raise
+  end
+
+    it 'should 404' do
+      expect(subject.get).to eq("404 - User not found!")
+    end
+  end
 end

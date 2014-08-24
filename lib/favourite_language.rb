@@ -6,7 +6,8 @@
 # Call results to get the answer.
 #
 # This class cares about computing language data for
-# a github user, retreived using an api client adapter, and retreiving the users favorite language.
+# a github user, retreived using an api client adapter
+# and working out the users favorite language.
 #
 class FavouriteLanguage
   attr_reader :github_user
@@ -16,7 +17,7 @@ class FavouriteLanguage
   end
 
   def get
-    response = get_github_user_data
+    response = github_user_data
 
     return '404 - User not found!' if response == '404'
     with_max_loc(response)
@@ -28,7 +29,7 @@ class FavouriteLanguage
     repos     = users_repos(response)
     counts    = language_counts(repos)
     max       = counts.invert.keys.sort.reverse.first
-    results   = counts.reject {|_key, value| value < max }
+    results   = counts.reject { |_key, value| value < max }
     languages = results.keys
 
     return languages.first if languages.size < 2
@@ -36,11 +37,12 @@ class FavouriteLanguage
   end
 
   def users_repos(response)
-    @client.get_users_repos(response) # Gives us an array of the users repos from the client.
+    # Gives us an array of the users repos from the client.
+    @client.get_users_repos(response)
   end
 
   def language_counts(repos)
-    languages     = Hash.new
+    languages     = {}
     api_languages = @client.get_repo_languages(repos)
 
     api_languages.map do |hash|
@@ -49,12 +51,9 @@ class FavouriteLanguage
     languages
   end
 
-  def get_github_user_data
-    begin
-      response = @client.get_github_user(github_user)
-    rescue
-      return '404'
-    end
-    response
+  def github_user_data
+    @client.get_github_user(github_user)
+  rescue
+    return '404'
   end
 end

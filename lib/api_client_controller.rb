@@ -1,10 +1,9 @@
 require_relative 'api_repo'
 require 'parallel'
-require 'pry'
 
 # This is where calls to the github api happen
 # This object is fairly dumb, and should only care about retreiving
-# data from the github api, not parsing it.
+# data from the github api, not performing computations it.
 class ApiClientController
   attr_reader :client
   def initialize(client_factory = Octokit::Client, repo_factory = ApiRepo)
@@ -31,5 +30,4 @@ class ApiClientController
   def users_repos(api_user_data)
     api_user_data.rels[:repos].get.data
   end
-
 end
