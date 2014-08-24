@@ -7,7 +7,7 @@ describe FavouriteLanguage do
   let(:api_client)         { double(:api_client) }
   let(:github_user)        { 'cybercymon' }
   let(:repos)              { [double]*3 }
-  let(:languages)          { [{:APL => 5, :COBAL => 4, :Python =>3}]*3 }
+  let(:languages)          { [{:APL => 5, :COB0L => 4, :Python =>3}]*3 }
 
   subject { described_class.new(github_user, api_client) }
 
@@ -25,8 +25,8 @@ describe FavouriteLanguage do
   end
 
   context 'when there are two or more equal results' do
-    let(:languages) { [{:APL => 5, :COBAL => 5, :Python =>3}]*3 }
-    let(:results) { [:APL, :COBAL] }
+    let(:languages) { [{:APL => 5, :COB0L => 5, :Python =>3}]*3 }
+    let(:results) { [:APL, :COB0L] }
 
     it 'returns the two' do
       expect(subject.get).to eq(results)

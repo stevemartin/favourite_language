@@ -14,10 +14,12 @@ Copy the `.netrc` template file to your home folder if you don't already have on
 
     cp .netrc.dist ~/.netrc
 
-Now replace the credientials in the `.netrc` file with your own
+Now replace the credentials in the `.netrc` file with your own
 
 ### If you do have a `~/.netrc`
-Add the credientials in the `.netrc.dist` file into your local `~/.netrc` and replace the biolerplate with your actual credientials.
+Add the credentials in the `.netrc.dist` file into your local `~/.netrc` and replace the boilerplate with your actual credentials.
+
+* NOTE: To run the integration tests you will need to have the correct `netrc` settings.
 
 # Usage
 In the app root folder:
@@ -35,6 +37,6 @@ IMO, this is not the best way it could be done, because a user can fork a repo a
 to one part of it, say the bash build script, when the primary code base might be written in a different language, say, C, or Javascript. The loc for the primary language ( C or Javascript ) would have more impact on the result than the bash lines would.
 
 ### A more accurate way.
-I investigated using a more sophisticated approach, by looking at a users commits for a given repo  and analyzing the filenames and blobs to see which types of language each commit contains and the lines of code of each, then summing the numbers in the commits ( rather than at the repo level ) the result would have given a much better overview as it would indicate which langauges the user has *actually committed with*. This proved to be a bit too complicated because ...
+I investigated using a more sophisticated approach, by looking at a users commits for a given repo and analyzing the filenames and blobs to see which types of language each commit contains and the lines of code of each, then summing the numbers in the commits ( rather than at the repo level ) the result would have given a much better overview as it would indicate which langauges the user has *actually committed with*. This proved to be a bit too complicated because ...
 
-Github uses a library called github-linguist which I thought that I would be able to use to solve this problem, but it turns out it is very coupled the the local filesystem that it is running on and wouldn't work well with api calls ( would have to cache each blob locally and turn it into a file ). While I think this approach would be better in the long run, the amount of work required was longer than 4 hours!
+Github uses a library called github-linguist which I thought that I would be able to use to solve this problem, but it turns out it is very coupled the the local filesystem that it is running on and wouldn't work well with remote api calls ( would have to cache each blob locally and turn it into a file ). While I think this approach would be better in the long run, the amount of work required was considerable.

@@ -9,4 +9,4 @@ gem 'ruby-progressbar'
 
 # Testing
 gem 'rspec'
-gem 'pry'
+gem 'aruba'
