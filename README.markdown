@@ -24,7 +24,7 @@ Add the credentials in the `.netrc.dist` file into your local `~/.netrc` and rep
 # Usage
 In the app root folder:
 
-    ruby script.rb tevio
+    ruby find_favourite tevio
 
     $-> :Ruby
 

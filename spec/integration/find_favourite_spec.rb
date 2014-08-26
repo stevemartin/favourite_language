@@ -3,7 +3,7 @@ require 'spec_helper'
 describe 'get favorite language' do
 
   let(:github_user) { 'tevio' }
-  let(:cmd) { "ruby ../../script.rb #{github_user}" }
+  let(:cmd) { "ruby ../../find_favourite #{github_user}" }
 
   it 'returns my favorite language' do
     command = run_interactive(cmd)

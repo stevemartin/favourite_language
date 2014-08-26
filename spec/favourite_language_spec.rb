@@ -3,7 +3,7 @@ require_relative '../lib/favourite_language'
 
 describe FavouriteLanguage do
 
-  let(:results) { :APL }
+  let(:results)            { :APL }
   let(:api_client)         { double(:api_client) }
   let(:github_user)        { 'cybercymon' }
   let(:repos)              { [double]*3 }
